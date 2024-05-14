@@ -1,0 +1,174 @@
+#include<iostream.h>
+#include<iomanip.h>
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<stdlib.h>
+class bank
+{
+char name[100];
+long int accno;
+char type[10];
+long int amount1;
+long int amount;
+long long int total;
+public:
+bank()
+{
+total=0;
+amount=0;
+amount1=0;
+}
+void setvalue()
+{
+cout<<"Enter the name:"<<endl;
+cin>>name;
+cout<<"Enter the Account number:"<<endl;
+cin>>accno;
+cout<<"Enter the account type:"<<endl;
+cin>>type;
+cout<<"Enter Balance:"<<endl;
+cin>>amount1;
+total=total+amount1;
+}
+void showbal()
+{
+if(total==0)
+{
+cout<<"NO available balance"<<endl;
+//return;
+}else
+{
+cout<<"Name:"<<ends<<name<<endl;
+cout<<"Account No:"<<ends<<accno<<endl;
+cout<<"Account type:"<<ends<<type<<endl;
+cout<<"total balance is:"<<ends<<total<<endl;
+}
+}
+
+
+
+
+
+void deposit()
+{
+cout<<"Enter amount to be deposited:"<<endl;
+cin>>amount;
+total=total+amount;
+}
+
+
+
+
+void withdrawl()
+{
+if(total==0)
+{
+cout<<"NO available balance"<<endl;
+return;
+}
+else
+{
+int a;
+int available_bal;
+cout<<"Enter amount to withdraw:"<<endl;
+cin>>a;
+total=total-a;
+cout<<"Available balance is:"<<ends<<total<<endl;
+}
+}
+
+
+void changepin()
+{
+int oldpin;
+int newpin;
+cout<<"Enter the old pin:"<<endl;
+cin>>oldpin;
+if(oldpin==1111)
+{
+cout<<"Enter the new pin:"<<endl;
+cin>>newpin;
+}
+else
+{
+cout<<"Wrong pin "<<endl;
+}
+}
+};
+void main()
+{
+bank k;
+int choice;
+char ch;
+clrscr();
+cout<<"                            ||  WELCOME TO  MY PROJECT  ||                   "<<endl;
+cout<<"============================================================================="<<endl;
+
+do
+{
+cout<<"                                  WELCOME TO ATM                                    "<<endl;
+cout<<"                                                                                    "<<endl;
+cout<<"                              ENTER THE FOUR DIGITS PIN                              "<<endl;
+char pin[4];
+int p=0;
+do
+{
+pin[p]=getch();
+if(pin[p]!='\r')
+{
+cout<<"*";
+}
+p++;
+}
+while(pin[p-1]!='\r');
+pin[p-1]='\0';
+cout<<pin<<endl;
+int check=atoi(pin);  // char convert to int function
+if(check==1111)
+{
+cout<<"                           CHOICE ANY ONE OPTION                                "<<endl;
+cout<<"______________________________________________________________________________        "<<endl;
+cout<<"1: Enter Name,Account no,account type "; cout<<"   2:  BALANCE ENQUIRY "<<endl;
+cout<<"                                                                                      "<<endl;
+cout<<"3: DEPOSIT MONEY                      "; cout<<"   4:  WITHDRAW MONEY  "<<endl;
+cout<<"                                                                                      "<<endl;
+cout<<"5: CHANGE PIN                         "; cout<<"   6:  CANCEL OR EXIT  "<<endl;
+cin>>choice;
+switch(choice)
+{
+case 1:
+k.setvalue();
+break;
+case 2:
+k.showbal();
+break;
+case 3:
+k.deposit();
+break;
+case 4:
+k.withdrawl();
+break;
+case 5:
+k.changepin();
+break;
+case 6:
+exit(1);
+break;
+default:
+cout<<"   wrong choice:"<<endl;
+}
+cout<<"Do you wish to continue(y/n)"<<endl;
+fflush(stdin);
+cin>>ch;
+}
+else
+{
+cout<<"Wrong pin:"<<endl;
+}
+}
+while(ch=='y'||ch=='Y');
+
+getch();
+}
+
